@@ -1,0 +1,9 @@
+[Unit]
+Description=Clipboard Markdown → HTML enrichment daemon
+
+[Service]
+ExecStart=%h/.cargo/bin/markclip
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

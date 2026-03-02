@@ -1,0 +1,20 @@
+[package]
+name = "markclip"
+version = "0.1.0"
+edition = "2024"
+description = "Wayland clipboard daemon that enriches Markdown copies with text/html"
+
+[[bin]]
+name = "markclip"
+path = "src/main.rs"
+
+[package.metadata.deb]
+section = "utils"
+assets = [
+    { source = "target/release/markclip", dest = "/usr/bin/markclip", mode = "755" },
+    { source = "markclip.service", dest = "/usr/lib/systemd/user/markclip.service", mode = "644" },
+]
+
+[dependencies]
+wl-clipboard-rs = "0.8"
+pulldown-cmark   = "0.11"
