@@ -3,6 +3,7 @@ name = "markclip"
 version = "0.1.0"
 edition = "2024"
 description = "Wayland clipboard daemon that enriches Markdown copies with text/html"
+license = "MIT"
 
 [[bin]]
 name = "markclip"

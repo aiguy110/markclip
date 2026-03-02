@@ -26,7 +26,7 @@ jobs:
         run: cargo build --release --locked
 
       - name: Build .deb package
-        run: cargo deb --no-build --deb-version ${{ github.ref_name }}
+        run: cargo deb --no-build --deb-version "${GITHUB_REF_NAME#v}"
 
       - name: Create GitHub release
         uses: softprops/action-gh-release@v2
