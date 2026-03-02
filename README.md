@@ -31,31 +31,48 @@ The binary is written to `target/release/markclip`.
 
 ## Install
 
-Copy the binary somewhere on your `PATH`:
+### From a .deb package (recommended)
+
+Download the latest `.deb` from the [Releases](../../releases) page and install it:
 
 ```sh
-cp target/release/markclip ~/.local/bin/
+sudo apt install ./markclip_*_amd64.deb
 ```
 
-Or install via `cargo`:
+This places the binary at `/usr/bin/markclip` and the systemd user unit at `/usr/lib/systemd/user/markclip.service`.
+
+Then enable and start the service:
 
 ```sh
-cargo install --path .
-```
-
-## Run as a systemd user service
-
-A unit file is included at `markclip.service`. It expects the binary at `~/.cargo/bin/markclip` (the default `cargo install` location).
-
-```sh
-# Install the unit
-cp markclip.service ~/.config/systemd/user/markclip.service
-
-# Enable and start
+systemctl --user daemon-reload
 systemctl --user enable --now markclip
 ```
 
-To check status or logs:
+### From source
+
+```sh
+cargo build --release
+cp target/release/markclip ~/.local/bin/
+```
+
+Then install the unit file and start the service:
+
+```sh
+cp markclip.service ~/.config/systemd/user/markclip.service
+systemctl --user daemon-reload
+systemctl --user enable --now markclip
+```
+
+### Via cargo install
+
+```sh
+cargo install --path .
+cp markclip.service ~/.config/systemd/user/markclip.service
+systemctl --user daemon-reload
+systemctl --user enable --now markclip
+```
+
+## Check status / logs
 
 ```sh
 systemctl --user status markclip

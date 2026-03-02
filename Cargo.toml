@@ -1,6 +1,6 @@
 [package]
 name = "markclip"
-version = "0.1.0"
+version = "0.1.3"
 edition = "2024"
 description = "Wayland clipboard daemon that enriches Markdown copies with text/html"
 license = "MIT"
@@ -10,6 +10,7 @@ name = "markclip"
 path = "src/main.rs"
 
 [package.metadata.deb]
+maintainer = "Josiah Hunsinger"
 section = "utils"
 assets = [
     { source = "target/release/markclip", dest = "/usr/bin/markclip", mode = "755" },

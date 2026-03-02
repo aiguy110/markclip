@@ -2,7 +2,7 @@
 Description=Clipboard Markdown → HTML enrichment daemon
 
 [Service]
-ExecStart=%h/.cargo/bin/markclip
+ExecStart=/usr/bin/markclip
 Restart=on-failure
 
 [Install]
